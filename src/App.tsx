@@ -9,7 +9,8 @@ import {
   Flower2,
   Gem,
   Heart,
-  Leaf,
+    Image as ImageIcon,
+    Leaf,
   Pencil,
   Share2,
   Sparkles,
@@ -21,6 +22,7 @@ import {
 } from "lucide-react";
 import * as Y from "yjs";
 import { WebrtcProvider } from "y-webrtc";
+import TemplateStudio from "./TemplateStudio";
 
 type Shape = "petal" | "dot" | "leaf" | "diamond" | "star" | "diya";
 type TemplateId = "festival" | "lotus" | "sunrise" | "mehndi";
@@ -291,8 +293,9 @@ function App() {
   const [copied, setCopied] = useState(false);
   const [activity, setActivity] = useState("You joined the circle");
   const [helpOpen, setHelpOpen] = useState(false);
+    const [page, setPage] = useState<"studio" | "templates">("studio");
 
-  useEffect(() => {
+    useEffect(() => {
     const doc = new Y.Doc();
     const sharedMotifs = doc.getArray<Motif>("motifs");
     const sharedDesign = doc.getMap<TemplateId>("design");
@@ -439,27 +442,39 @@ function App() {
     setNameOpen(false);
   }
 
-  return (
-    <main className="app-shell">
-      <header className="topbar">
-        <a className="brand" href="#home" aria-label="Rangoli studio home">
-          <span className="brand-flower">
-            <FlowerMark color="#e89a28" size={30} />
-          </span>
-          <span className="brand-name">
-            rangoli<span>.</span>
-          </span>
-          <span className="brand-divider" />
-          <span className="brand-studio">circle studio</span>
-        </a>
-        <div className="top-actions">
-          <button
-            className="icon-button help-button"
-            onClick={() => setHelpOpen(true)}
-            aria-label="How to use the studio"
-          >
-            <CircleHelp size={18} />
-          </button>
+  if (page === "templates") {
+      return <TemplateStudio onBack={() => setPage("studio")} />;
+    }
+
+    return (
+      <main className="app-shell">
+        <header className="topbar">
+          <a className="brand" href="#home" aria-label="Rangoli studio home">
+            <span className="brand-flower">
+              <FlowerMark color="#e89a28" size={30} />
+            </span>
+            <span className="brand-name">
+              rangoli<span>.</span>
+            </span>
+            <span className="brand-divider" />
+            <span className="brand-studio">circle studio</span>
+          </a>
+          <div className="top-actions">
+            <button
+              className="studio-switch"
+              onClick={() => setPage("templates")}
+              title="Choose a template image to color"
+            >
+              <ImageIcon className="studio-switch-icon" size={15} />
+              Template studio
+            </button>
+            <button
+              className="icon-button help-button"
+              onClick={() => setHelpOpen(true)}
+              aria-label="How to use the studio"
+            >
+              <CircleHelp size={18} />
+            </button>
           <div
             className="presence-pill"
             title={

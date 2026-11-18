@@ -2,6 +2,10 @@
 
 A responsive shared canvas for making a Rangoli together. Choose from Festival, Lotus, Sunrise, and Mehndi templates; select petals, leaves, diamonds, stars, diyas, or dots; and the shapes automatically face outward from the Rangoli center. Adjust the angle further if desired, then watch each mark repeat around the design in 4-, 6-, 8-, or 12-fold symmetry. Invite people with the room link, edit your displayed username, undo or clear custom marks, and save the artwork as SVG. Template changes and artwork are synchronized for everyone in the room.
 
+## Template Studio
+
+The **Template studio** button in the header opens a second page for coloring Rangoli templates from the `/images` gallery. Tap inside a region to flood-fill it with one of the palette colors. Fills blend with whatever is already there, so overlapping colors mix naturally. **Make outline** converts colored templates into simplified, color-region-based outlines; existing line-art templates are cleaned to black lines on white. **Pencil sketch** converts the current image to a grayscale, graphite-shaded drawing (a blurred, inverted "dodge" layer blended over the grayscale base) for a hand-drawn look. Use **Undo fill**, **Reset**, and **Save PNG** to refine and keep your work. Fills are stored on the device and saved to a PNG when you download.
+
 There is no login, passcode, or email-sending feature. Your editable username is saved in this browser and broadcast to collaborators as live presence. The Rangoli artwork is saved/downloaded as SVG through the Save art action.
 
 ## GitHub Pages (static frontend only)
